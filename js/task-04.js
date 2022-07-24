@@ -6,15 +6,15 @@ const valueRef = document.querySelector('#value');
 
 console.log(btnDecrRef)
 
-btnDecrRef.addEventListener('click', decreaseCounter);
-btnIncrRef.addEventListener('click', increaseCounter);
+btnDecrRef.addEventListener('click', OnDecreaseBtnClick);
+btnIncrRef.addEventListener('click', OnIncreaseBtnClick);
 
-function decreaseCounter () {
+function OnDecreaseBtnClick () {
     counterValue -= 1
     valueRef.textContent = counterValue;
 }
 
-function increaseCounter() {
+function OnIncreaseBtnClick() {
     counterValue += 1
     valueRef.textContent = counterValue;
 }
