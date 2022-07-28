@@ -2,9 +2,9 @@ const inputRef = document.querySelector('#name-input');
 const outputRef = document.querySelector('#name-output');
 
 
-inputRef.addEventListener('input', OnInputChange);
+inputRef.addEventListener('input', onInputChange);
 
-function OnInputChange(event) {
+function onInputChange(event) {
 
     if (event.currentTarget.value === '') {
         return outputRef.textContent = 'Anonymous';

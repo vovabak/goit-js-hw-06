@@ -4,5 +4,5 @@ const inputLabelRef = document.querySelector('#text');
 inputRef.addEventListener('change', onInputChange);
 
 function onInputChange(event) {    
-    inputLabelRef.style.fontSize = String(inputRef.value) + 'px';
+    inputLabelRef.style.fontSize = event.currentTarget.value + 'px';
 }
