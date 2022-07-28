@@ -12,10 +12,11 @@ destroyBtn.addEventListener('click', onDestroyBtnClick);
 
 
 function createBoxes(amount) {
-    const collectionElements = [];  
-
+  const collectionElements = [];
+  amount = inputRef.value;
+  
     for (let i = 1; i <= amount; i += 1) {
-      collectionElements.push(`<div>el${i}</div>`)
+      collectionElements.push(`<div></div>`)
     }
 
     return collectionElements.join('');  
@@ -23,24 +24,30 @@ function createBoxes(amount) {
   
 function onCreateBtnClick() {
   
-  const amount = inputRef.value;
-
-  containerRef.innerHTML = createBoxes(amount);
-
-  addStyleToBoxesElements();  
-}
-
-function onDestroyBtnClick() {
-  inputRef.value = '';
-  containerRef.innerHTML = '';
-}
-
-function addStyleToBoxesElements() {
-
+  containerRef.insertAdjacentHTML("beforeend", createBoxes());
+ 
+  let elSize = 20;
+  
   for (const child of containerRef.children) {
-    child.classList.add('boxes__element')
+    elSize += 10;    
+    
     child.style.backgroundColor = getRandomHexColor();
-    child.style.width = '30px';
-    child.style.height = '30px';
+    child.style.width = elSize + 'px';
+    child.style.height = elSize + 'px';
   }
 }
+
+function onDestroyBtnClick(amount) {
+
+  amount = inputRef.value;
+
+  if (amount > containerRef.children.length) {
+    containerRef.innerHTML = '';
+    return;
+  }
+
+  for (let i = 0; i < amount; i++) {
+    containerRef.lastElementChild.remove();
+  } 
+}
+

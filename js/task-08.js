@@ -5,14 +5,16 @@ formRef.addEventListener('submit', onFormSubmit);
 function onFormSubmit(event) {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
-    const element = event.currentTarget.elements;
+    const { elements } = event.currentTarget;
 
-    
-    if (element.email.value === '' || element.password.value === '') {
+    if (elements.email.value === '' || elements.password.value === '') {
         alert("Необхідно заповнити усі поля");
+        return;
     }
-    
-    return formData;
-}
 
+    const formData = { email: elements.email.value, password: elements.password.value }
+    
+    console.log(formData)
+
+    event.currentTarget.reset();
+}
